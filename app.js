@@ -2,7 +2,6 @@ var createError = require('http-errors');
 var express = require('express');
 var http = require('http');
 
-var indexRouter = require('./routes/index');
 var taylirRouter = require('./routes/taylir');
 var protectorRouter = require('./routes/protector');
 
@@ -16,7 +15,6 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
-app.use('/', indexRouter);
 app.use('/taylir/', taylirRouter);
 app.use('/protector/', protectorRouter);
 

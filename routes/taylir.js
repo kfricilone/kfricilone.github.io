@@ -3,11 +3,9 @@ var router = express.Router();
 
 var parser = require('../parser');
 
-router.get('/', function(req, res, next)
-{
+router.get('/', function(req, res, next) {
 
-  parser.parse('kfricilone', 'Taylir', function(html)
-  {
+  parser.parse('kfricilone', 'Taylir', function(html) {
     res.send(html);
   });
 
