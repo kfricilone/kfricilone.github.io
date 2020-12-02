@@ -1,12 +1,13 @@
-var createError = require('http-errors');
-var express = require('express');
-var http = require('http');
+const express = require('express');
+const compression = require('compression');
+const createError = require('http-errors');
 
-var taylirRouter = require('./routes/taylir');
-var protectorRouter = require('./routes/protector');
+const taylirRouter = require('./routes/taylir');
+const springrsRouter = require('./routes/springrs');
+const protectorRouter = require('./routes/protector');
 
-var app = express();
-var server = http.createServer(app);
+const app = express();
+app.use(compression());
 
 // view engine setup
 app.set('views', 'views');
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 app.use('/taylir/', taylirRouter);
+app.use('/spring-rs/', springrsRouter);
 app.use('/protector/', protectorRouter);
 
 // catch 404 and forward to error handler
@@ -34,5 +36,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.set('port', 3000);
-server.listen(3000, 'localhost');
+app.listen(3000, () => {
+  console.log(`kfricilone.me listening on 0.0.0.0:3000`)
+})

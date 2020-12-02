@@ -5,7 +5,7 @@ const parser = require('../parser');
 
 router.get('/', function(req, res, next) {
 
-  parser.parse('kfricilone', 'Protector', function(html) {
+  parser.parse('service-rs', 'spring-rs', function(html) {
     res.send(html);
   });
 
